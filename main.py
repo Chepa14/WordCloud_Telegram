@@ -60,8 +60,6 @@ def parse_data(data):
         for msg in user_data:
             words_by_name[name] = list(itt.chain(words_by_name[name], re.findall(r'\w+', msg)))
     print('Участники чата: ' + str(users_name))
-    print('Машка' + ' - ' + str(len(words_by_name['Машка ❤️'])) + ' сообщений')
-    print('АЙВАН' + ' - ' + str(len(words_by_name['АЙВАН'])) + ' сообщений')
     return words_by_name
 
 
@@ -73,7 +71,6 @@ def show_wordCloud(wordCloud, name):
 
 
 def create_wordCloud(words):
-    print(words.items())
     for user_words in words.items():
         print('Создается облако слов...')
         wordCloud = WordCloud(width=500,
@@ -83,12 +80,13 @@ def create_wordCloud(words):
                               background_color="white").generate(' '.join(user_words[1]))
         correct_name = user_words[0].split(' ')[0]
         wordCloud.to_file(f"{int(time.time())}.png")
-        show_wordCloud(wordCloud, user_words[0])
+        # show_wordCloud(wordCloud, user_words[0])
         print('Успешно!')
 
 
 def main():
-    data = get_data_from_path(r'C:\Users\Ivan\Downloads\Telegram Desktop\ChatExport_2021-01-22')
+    # data = get_data_from_path(r'C:\Users\Ivan\Downloads\Telegram Desktop\ChatExport_2021-01-22')
+    data = get_data_from_path(r'C:\Users\Ivan\Downloads\Telegram Desktop\ChatExport_2021-03-29')
     parsed_words = parse_data(data)
     create_wordCloud(parsed_words)
 
