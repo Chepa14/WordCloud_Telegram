@@ -85,7 +85,6 @@ def create_wordCloud(words):
 
 
 def main():
-    # data = get_data_from_path(r'C:\Users\Ivan\Downloads\Telegram Desktop\ChatExport_2021-01-22')
     data = get_data_from_path(r'C:\Users\Ivan\Downloads\Telegram Desktop\ChatExport_2021-03-29')
     parsed_words = parse_data(data)
     create_wordCloud(parsed_words)
