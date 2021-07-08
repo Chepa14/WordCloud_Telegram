@@ -1,5 +1,7 @@
 # Create Word-Cloud of Telegramm chat archive
 
+Python project for parsing the Telegram chat archive and visualizing the most common words in the form of a word cloud.
+
 ## Step-by-step instruction:
 
 #### 1. Export chat from Telegramm
