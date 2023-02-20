@@ -44,8 +44,7 @@ def get_data_from_path(path):
     data = []
     for filename in os.listdir(path):
         if filename.endswith('.html'):
-            data = list(itt.chain(data,
-                                  get_data(os.path.join(path, filename))))
+            data = list(itt.chain(data, get_data(os.path.join(path, filename))))
         else:
             continue
     print('Общее количество сообщений - ' + str(len(data)))
@@ -73,19 +72,20 @@ def show_wordCloud(wordCloud, name):
 def create_wordCloud(words):
     for user_words in words.items():
         print('Создается облако слов...')
-        wordCloud = WordCloud(width=500,
-                              height=500,
-                              max_words=1000,
-                              min_font_size=3,
+        wordCloud = WordCloud(width=1000,
+                              height=1000,
+                              max_words=2000,
+                              min_font_size=5,
                               background_color="white").generate(' '.join(user_words[1]))
         correct_name = user_words[0].split(' ')[0]
-        wordCloud.to_file(f"{int(time.time())}.png")
-        # show_wordCloud(wordCloud, user_words[0])
+        wordCloud.to_file(f"{correct_name}_{int(time.time())}.png")
+        show_wordCloud(wordCloud, user_words[0])
         print('Успешно!')
 
 
 def main():
-    data = get_data_from_path(r'C:\Users\Ivan\Downloads\Telegram Desktop\ChatExport_2021-03-29')
+    # data = get_data_from_path(r"/home/aqude/Documents/python/WordCloud_Telegram/")
+    data = get_data_from_path(r"/home/aqude/.var/app/org.telegram.desktop/data/TelegramDesktop/tdata/temp_data/ChatExport_2023-02-20")
     parsed_words = parse_data(data)
     create_wordCloud(parsed_words)
 
